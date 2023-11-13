@@ -1,0 +1,30 @@
+<div class="Container">
+    <div class="content-0" style="border: 1;">
+        <h4>Login as an Admin</h4> 
+        <hr>
+        <div>
+            <form [formGroup]="loginRef" (ngSubmit)="signIn()">
+                <label for="emailId"> Email Address: </label><br>
+                <input type="email" formControlName="emailId"><br><br>
+                <label for="password">Password: </label><br>
+                <input type="password" formControlName="password"><br><br>
+                <div class=" d-flex  ">
+                    <input class="btn btn-primary " type="submit" value="Login">
+                    <input class="btn btn-primary mx-1" type="reset" value="Reset">
+                </div>
+            </form>
+        </div>
+        <br>
+        <span style="color:red">{{msg}}</span>
+    </div>
+    <div class="content-1">
+        <img src="..\assets\bgImg.jpg" srcset="..\assets\bgImg.jpg 750w,
+        ..\assets\bgImg.jpg 20480w" width="605px" height="75x"  max-width = "100%"
+        height = "auto" alt="landscape">
+    </div>
+    <div>
+
+        <p style="text-align: center; background-color:black; color: aliceblue; padding: 5px;">&copy; AnnaTech App. - Developed by Henna
+            Solutions &nbsp;&nbsp;&nbsp;<a href="#" style="color: coral;"> Privacy / Security / Terms</a></p>
+    </div>
+</div>

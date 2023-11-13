@@ -1,0 +1,76 @@
+
+<div style="margin: 0%;">
+  
+  <div class="d-flex flex-row-reverse"><button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">Create Clients</button></div>
+
+</div>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr >
+            <th scpoe="">ID</th>
+            <th scpoe="">First Name</th>
+            <th scpoe="">Last Name</th>
+            <th scpoe="">Email ID</th>
+            <th scpoe="">City</th>
+            <th scpoe="">Mobile No.</th>
+            <th scpoe="">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let info of info">
+            <td>{{info.id}}</td>
+            <td>{{info.firstName}}</td>
+            <td>{{info.lastName}}</td>
+            <td>{{info.emailId}}</td>
+            <td>{{info.city}}</td>
+            <td>{{info.mobile}}</td>
+            <td>
+                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" value="updateClient" (click)="getClientsVal(info)">Edit</button>
+                <button class="btn btn-danger mx-1" (click)="deleteClient(info.id)" >Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{buttonName}} Form</h5>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="clientRef">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">First Name</label>
+                  <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                  <input type="text" formControlName="lastName" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email Address</label>
+                    <input type="email" formControlName="emailId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">City</label>
+                    <input type="tetx" formControlName="city" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>     
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Mobile No.</label>
+                    <input type="text" formControlName="mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>          
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+          <button type="button" (click)="addClient()" class="btn btn-primary" [value]="buttonName">{{buttonName}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  

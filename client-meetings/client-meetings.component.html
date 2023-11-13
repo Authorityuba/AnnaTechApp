@@ -1,0 +1,96 @@
+
+<div style="margin-top: 0%;">
+  
+  <div class="d-flex flex-row-reverse"><button class="btn btn-primary "  data-bs-toggle="modal" data-bs-target="#exampleModal">Create Meetings</button></div>
+
+</div>
+<table class="table">
+    <thead>
+        <tr style="font-size: smaller;">
+            <th scpoe="">Meeting ID</th>
+            <th scpoe="">Meeting Topic</th>
+            <th scpoe="">No. of People</th>
+            <th scpoe="">Names</th>
+            <th scpoe="">Email ID</th>
+            <th scpoe="">Meeting Date</th>
+            <th scpoe="">Meeting Time</th>
+            <th scpoe="">Created On</th>
+            <th scpoe="">Short Description</th>
+            <th scpoe="">Meeting Status</th>
+            <th scpoe="">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let meetingDetails of meetingDetails">
+            <td>{{meetingDetails.id}}</td>
+            <td>{{meetingDetails.meetingTopic}}</td>
+            <td>{{meetingDetails.noOfPeople}}</td>
+            <td>{{meetingDetails.names}}</td>
+            <td>{{meetingDetails.emailId}}</td>
+            <td>{{meetingDetails.meetingDate}}</td>
+            <td>{{meetingDetails.meetingTime}}</td>
+            <td>{{meetingDetails.createdOn}}</td>
+            <td>{{meetingDetails.shortDesp}}</td>
+            <td>{{meetingDetails.meetingStatus}}</td>
+            <td>
+                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:70px; height: 34px; align-items: center;" value="updateClient" (click)="getMeetingVal(meetingDetails)">Edit</button>
+                <button class="btn btn-danger mx-3" style="width:70px; height: 35px; align-items: center;" (click)="deleteClient(meetingDetails.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">AnnaTech Meetings Scheduler</h5>
+        </div>
+        <div class="modal-body">
+            <form  [formGroup]="meetingRef">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Meeting Topic</label>
+                  <input type="text" formControlName="meetingTopic" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">No. of People</label>
+                  <input type="number" formControlName="noOfPeople" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Names</label>
+                  <input type="text" formControlName="names" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email ID(s)</label>
+                    <input type="email" formControlName="emailId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3 d-flex">
+                    <label for="exampleInputEmail1" class="form-label">Meeting Date:</label>
+                    <input type="date" style="width: 40%; height: 80%;" formControlName="meetingDate" class="form-control me-2" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="exampleInputEmail1" class="form-label ">Meeting Time: </label>
+                    <input type="time" style="width: 40%;  height:80%;" formControlName="meetingTime" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>   
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Created On</label>
+                    <input type="datetime-local" formControlName="createdOn" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div> 
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Short Description</label>
+                    <input type="text" formControlName="shortDesp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>  
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Meeting Status</label>
+                    <input type="text" formControlName="meetingStatus" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                                    
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+          <button type="button"  (click)="addMeeting()" class="btn btn-primary" [value]="buttonName">{{buttonName}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
